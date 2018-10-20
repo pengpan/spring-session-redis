@@ -1,0 +1,1 @@
+INSERT INTO t_user ( id, `name`, password ) VALUES ( null, 'admin', '123' );
