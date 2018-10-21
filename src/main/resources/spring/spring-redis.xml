@@ -31,7 +31,14 @@
     </bean>
 
     <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
-        <property name="maxInactiveIntervalInSeconds" value="1800" />
+        <property name="maxInactiveIntervalInSeconds" value="1800"/>
+        <property name="cookieSerializer">
+            <bean class="org.springframework.session.web.http.DefaultCookieSerializer">
+                <property name="cookieName" value="sid"/>
+                <property name="cookiePath" value="/"/>
+                <property name="useHttpOnlyCookie" value="true"/>
+            </bean>
+        </property>
     </bean>
 
     <util:constant static-field="org.springframework.session.data.redis.config.ConfigureRedisAction.NO_OP"/>
