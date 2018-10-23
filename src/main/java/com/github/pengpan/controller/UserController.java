@@ -5,6 +5,7 @@ import com.github.pengpan.entity.User;
 import com.github.pengpan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +21,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping
-    public String index() {
+    public String index(HttpServletRequest request, Model model) {
+        model.addAttribute("user", request.getSession().getAttribute("user"));
         return "index";
     }
 
